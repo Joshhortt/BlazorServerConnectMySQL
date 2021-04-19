@@ -10,6 +10,7 @@
 <h3>People</h3>
 
 <button class="btn btn-primary" @onclick="InsertData">Insert</button>
+<button class="btn btn-warning" @onclick="UpdateData">Update</button>
 
 @if (people == null)
 {
@@ -35,6 +36,15 @@ else
 		string sql = "insert into (FirstName, LastName) values (@FirstName, @LastName);";
 
 		await _data.SaveData(sql, new { FirstName = "James", LastName = "HetField" }, _config.GetConnectionString("default"));
+	}
+
+	private async Task UpdateData()
+	{
+		string sql = "update people set FirstName = @FirstName where LastName";
+
+		await _data.SaveData(sql, new { FirstName = "Jose", LastName = "Hortt" }, _config.GetConnectionString("default"));
+
+		await OnInitializedAsync();
 	}
 
 	protected override async Task OnInitializedAsync()
