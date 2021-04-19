@@ -1,22 +1,42 @@
 ﻿@page "/people"
 
 @using DataLibrary
+@using BlazorServer.Models
+@using Microsoft.Extensions.Configuration;
 @inject IDataAccess _data
+@inject IConfiguration _config
 
 
 <h3>People</h3>
 
+@if (people == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	@foreach (var p in people)
+	{
+		<p>
+			@p.FirstName @p.LastName
+		</p>
+	
+	}
+}
+
 @code {
 
+	List<PersonModel> people;
 
-		//protected override async Task OnInitializedAsync()
-		//{
-		//	forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-		//}
+	//protected override async Task OnInitializedAsync()
+	//{
+	//	forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+	//}
 
-		protected override async Task OnInitializedAsync()
-		{
-			// await _data.LoadData
-		}
+	protected override async Task OnInitializedAsync()
+	{
+		string sql = "select * from people";
+		people = await _data.LoadData<PersonModel, dynamic>(sql, new { }, _config.GetConnectionString("default"));
+	}
 
 }
