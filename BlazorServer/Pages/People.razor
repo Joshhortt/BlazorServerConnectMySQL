@@ -11,6 +11,7 @@
 
 <button class="btn btn-primary" @onclick="InsertData">Insert</button>
 <button class="btn btn-warning" @onclick="UpdateData">Update</button>
+<button class="btn btn-danger" @onclick="DeleteData">Update</button>
 
 @if (people == null)
 {
@@ -29,6 +30,8 @@ else
 
 @code {
 
+	// CRUD actions
+
 	List<PersonModel> people;
 
 	private async Task InsertData()
@@ -43,6 +46,15 @@ else
 		string sql = "update people set FirstName = @FirstName where LastName";
 
 		await _data.SaveData(sql, new { FirstName = "Jose", LastName = "Hortt" }, _config.GetConnectionString("default"));
+
+		await OnInitializedAsync();
+	}
+
+	private async Task DeleteData()
+	{
+		string sql = "delete from people where LastName = @LastName";
+
+		await _data.SaveData(sql, new { LastName = "Hetfiled" }, _config.GetConnectionString("default"));
 
 		await OnInitializedAsync();
 	}
