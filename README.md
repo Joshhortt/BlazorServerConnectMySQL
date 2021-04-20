@@ -22,11 +22,13 @@ A simple Blazor Server Application with Full CRUD Actions connected to MySql Com
 - • Update Data
 - • Delete Data
 ## Technologies 
-Visual Studio Code
-C# Programming Language
-HTML 5
-CSS
-.NET Core 
-Blazor Server
-Dapper
-MySQL Community
+- Visual Studio Code
+- C# Programming Language
+- HTML 5
+- CSS
+- .NET Core 
+- Blazor Server
+- Dapper
+- MySQL Community
+#Author
+_Josh Hortt_
