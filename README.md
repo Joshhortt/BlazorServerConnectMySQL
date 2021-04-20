@@ -30,5 +30,5 @@ A simple Blazor Server Application with Full CRUD Actions connected to MySql Com
 - Blazor Server
 - Dapper
 - MySQL Community
-#Author
-_Josh Hortt_
+## Author
+Josh Hortt
